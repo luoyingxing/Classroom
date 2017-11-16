@@ -12,16 +12,16 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:paddingTop="50dp"
-        android:text="韩山师范学院"
+        android:text="@string/start_title"
         android:textColor="@color/white"
-        android:textSize="18sp" />
+        android:textSize="20sp" />
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:paddingBottom="120dp"
-        android:src="@mipmap/ic_launcher" />
+        android:src="@mipmap/ic_start_logo" />
 
     <TextView
         android:id="@+id/title"
@@ -30,7 +30,7 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:paddingBottom="80dp"
-        android:text="韩山师范学院"
+        android:text="@string/start_subject"
         android:textColor="@color/white"
         android:textSize="20sp" />
 
@@ -40,8 +40,8 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:paddingBottom="50dp"
-        android:text="韩山师范学院"
+        android:text="@string/start_company"
         android:textColor="@color/white"
-        android:textSize="15sp" />
+        android:textSize="16sp" />
 
 </RelativeLayout>

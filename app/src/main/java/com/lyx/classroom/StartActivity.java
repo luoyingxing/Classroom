@@ -34,7 +34,7 @@ public class StartActivity extends Activity {
 
             @Override
             public void onNext(Long aLong) {
-                if (aLong > 2.5) {
+                if (aLong > Constant.TIME_START) {
                     Intent intent = new Intent(StartActivity.this, MainActivity.class);
                     startActivity(intent);
                     finish();
