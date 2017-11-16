@@ -5,7 +5,7 @@
     android:background="@color/white"
     android:orientation="vertical">
 
-    <com.lyx.classroom.ViewPagerIndicator
+    <com.lyx.classroom.home.ViewPagerIndicator
         android:id="@+id/focus_indicator"
         android:layout_width="match_parent"
         android:layout_height="45dp"

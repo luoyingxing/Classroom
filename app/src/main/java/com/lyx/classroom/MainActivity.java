@@ -5,6 +5,7 @@ import android.support.v4.view.ViewPager;
 
 import com.lyx.classroom.home.MainAdapter;
 import com.lyx.classroom.base.BaseActivity;
+import com.lyx.classroom.home.ViewPagerIndicator;
 import com.lyx.frame.annotation.Id;
 import com.lyx.frame.annotation.IdParser;
 
