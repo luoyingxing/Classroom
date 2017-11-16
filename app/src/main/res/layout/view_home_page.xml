@@ -11,8 +11,10 @@
         android:layout_height="match_parent"
         android:divider="@color/gray_f7"
         android:dividerHeight="14dp"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:scrollbarStyle="outsideOverlay" />
+        android:horizontalSpacing="12dp"
+        android:numColumns="2"
+        android:padding="12dp"
+        android:scrollbarStyle="outsideOverlay"
+        android:verticalSpacing="10dp" />
 
 </LinearLayout>

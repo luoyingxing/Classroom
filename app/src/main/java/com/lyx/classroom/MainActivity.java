@@ -4,13 +4,13 @@ import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 
+import com.lyx.classroom.dao.Area;
 import com.lyx.classroom.home.MainAdapter;
 import com.lyx.classroom.base.BaseActivity;
-import com.lyx.classroom.home.ViewPagerIndicator;
 import com.lyx.frame.annotation.Id;
 import com.lyx.frame.annotation.IdParser;
+import com.lyx.frame.widget.ViewPagerIndicator;
 
-import java.util.Arrays;
 
 public class MainActivity extends BaseActivity {
     @Id(R.id.focus_indicator)
@@ -18,21 +18,19 @@ public class MainActivity extends BaseActivity {
     @Id(R.id.focus_view_page)
     private ViewPager mViewPager;
 
-    private String[] mTitle = new String[]{"东丽区", "韩东校区", "西区", "东区", "分院校区"};
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         IdParser.inject(this);
 
-        setTitle("韩山师范学院");
-        getRightImage().setImageResource(R.mipmap.ic_launcher);
-        getBackView().setImageResource(R.mipmap.ic_launcher);
+        setTitle(getString(R.string.home_title));
+        getRightImage().setImageResource(R.mipmap.ic_home_more);
+        getBackView().setImageResource(R.mipmap.ic_home_personal);
         getBackView().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showToast("个人中心");
+                showToast(getResources().getString(R.string.home_personal));
             }
         });
     }
@@ -40,13 +38,8 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        initData();
-    }
-
-    private void initData() {
-        MainAdapter adapter = new MainAdapter(this, Arrays.asList(mTitle));
-        mIndicator.setTabItemTitles(Arrays.asList(mTitle));
-        mViewPager.setAdapter(adapter);
+        mViewPager.setAdapter(new MainAdapter(this, Area.getAreaList()));
+        mIndicator.setTabItemTitles(Area.getAreaList());
         mIndicator.setViewPager(mViewPager, 0);
     }
 }

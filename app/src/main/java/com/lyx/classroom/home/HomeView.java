@@ -5,9 +5,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import com.lyx.classroom.R;
+import com.lyx.classroom.dao.Area;
 import com.lyx.frame.adapter.abs.CommonAdapter;
+import com.lyx.frame.utils.DpiUtils;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -15,22 +19,21 @@ import java.util.ArrayList;
 /**
  * HomeView
  * <p/>
- * Created by luoyingxing on 16/10/19.
+ * Created by luoyingxing on 17/11/16.
  */
 public class HomeView implements Serializable {
-    private static final String TAG = HomeView.class.getSimpleName();
     private View mRootView;
     private Context mContext;
-    private String mTitle;
+    private Area mArea;
 
     private ViewHolder viewHolder;
 
     public HomeView() {
     }
 
-    public HomeView(Context context, String title) {
+    public HomeView(Context context, Area area) {
         this.mContext = context;
-        this.mTitle = title;
+        this.mArea = area;
         init();
     }
 
@@ -55,13 +58,19 @@ public class HomeView implements Serializable {
         }
     }
 
-    private CommonAdapter<String> mAdapter;
+    private CommonAdapter<Area> mAdapter;
 
     private void setAdapter() {
-        mAdapter = new CommonAdapter<String>(mContext, new ArrayList<String>(), R.layout.item_home_list) {
+        final int width = (DpiUtils.getWidth(mContext) - DpiUtils.dipTopx(32)) / 2;
+        final int height = width / 5 * 3;
+
+        mAdapter = new CommonAdapter<Area>(mContext, new ArrayList<Area>(), R.layout.item_home_list) {
             @Override
-            protected void convert(com.lyx.frame.adapter.abs.ViewHolder holder, String s, int i) {
-                holder.setText(R.id.tv_item_list, s);
+            protected void convert(com.lyx.frame.adapter.abs.ViewHolder holder, Area area, int i) {
+                holder.setText(R.id.tv_item_list, area.getTitle());
+                ImageView imageView = holder.getView(R.id.iv_item_image);
+                imageView.setLayoutParams(new LinearLayout.LayoutParams(width, height));
+                imageView.setImageResource(area.getImage());
             }
         };
 
@@ -75,7 +84,7 @@ public class HomeView implements Serializable {
     }
 
     private void loadDataList() {
-        mAdapter.addAll("top(头条，默认)", "shehui(社会)", "guonei(国内)");
+        mAdapter.addAll(mArea.getChildArea());
     }
 
     private class ViewHolder {

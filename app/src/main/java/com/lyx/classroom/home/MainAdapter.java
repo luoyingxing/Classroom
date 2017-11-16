@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.lyx.classroom.R;
+import com.lyx.classroom.dao.Area;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,30 +15,24 @@ import java.util.List;
 /**
  * MainAdapter
  * <p/>
- * Created by luoyingxing on 16/10/19.
+ * Created by luoyingxing on 17/11/16..
  */
 public class MainAdapter extends PagerAdapter {
-    private static final String TAG = MainAdapter.class.getSimpleName();
     private Context mContext;
+    private List<Area> mAreaList = new ArrayList<>();
 
-    private int mViesCount;
-    private List<String> mTitleList = new ArrayList<>();
-
-    public MainAdapter(Context context, List<String> title) {
+    public MainAdapter(Context context, List<Area> list) {
         this.mContext = context;
-        this.mTitleList = title;
-        init();
-    }
-
-    private void init() {
-        mViesCount = mTitleList.size();
+        this.mAreaList = list;
     }
 
     @Override
     public int getCount() {
-        return mViesCount;
+        if (mAreaList != null) {
+            return mAreaList.size();
+        }
+        return 0;
     }
-
 
     @Override
     public boolean isViewFromObject(View view, Object object) {
@@ -46,18 +41,17 @@ public class MainAdapter extends PagerAdapter {
 
     @Override
     public Object instantiateItem(ViewGroup container, int position) {
-        View views = null;
         View mPagerView = LayoutInflater.from(mContext).inflate(R.layout.item_views_adapter, null, false);
-        ViewGroup viewGroup = (ViewGroup) mPagerView.findViewById(R.id.rl_fragment_news_rootView);
+        ViewGroup viewGroup = (ViewGroup) mPagerView.findViewById(R.id.rl_home_root);
 
-        HomeView focusView = new HomeView(mContext, mTitleList.get(position));
-        views = focusView.getRootView();
+        HomeView focusView = new HomeView(mContext, mAreaList.get(position));
+        View root = focusView.getRootView();
 
-        if (views != null) {
-            if (views.getParent() != null) {
-                ((ViewGroup) views.getParent()).removeView(views);
+        if (root != null) {
+            if (root.getParent() != null) {
+                ((ViewGroup) root.getParent()).removeView(root);
             }
-            viewGroup.addView(views);
+            viewGroup.addView(root);
         }
         container.addView(mPagerView);
         return mPagerView;
