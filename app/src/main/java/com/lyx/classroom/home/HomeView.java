@@ -1,6 +1,7 @@
 package com.lyx.classroom.home;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
@@ -10,6 +11,7 @@ import android.widget.LinearLayout;
 
 import com.lyx.classroom.R;
 import com.lyx.classroom.dao.Area;
+import com.lyx.classroom.room.RoomActivity;
 import com.lyx.frame.adapter.abs.CommonAdapter;
 import com.lyx.frame.utils.DpiUtils;
 
@@ -78,7 +80,9 @@ public class HomeView implements Serializable {
         viewHolder.gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
+                Intent intent = new Intent(mContext, RoomActivity.class);
+                intent.putExtra(RoomActivity.PARAM, mAdapter.getItem(position));
+                mContext.startActivity(intent);
             }
         });
     }

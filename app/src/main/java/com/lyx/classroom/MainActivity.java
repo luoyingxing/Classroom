@@ -33,13 +33,10 @@ public class MainActivity extends BaseActivity {
                 showToast(getResources().getString(R.string.home_personal));
             }
         });
-    }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
         mViewPager.setAdapter(new MainAdapter(this, Area.getAreaList()));
         mIndicator.setTabItemTitles(Area.getAreaList());
         mIndicator.setViewPager(mViewPager, 0);
     }
+
 }
