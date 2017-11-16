@@ -2,6 +2,7 @@ package com.lyx.classroom;
 
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
+import android.view.View;
 
 import com.lyx.classroom.home.MainAdapter;
 import com.lyx.classroom.base.BaseActivity;
@@ -26,8 +27,14 @@ public class MainActivity extends BaseActivity {
         IdParser.inject(this);
 
         setTitle("韩山师范学院");
-        getBackView().setImageResource(R.mipmap.ic_launcher);
         getRightImage().setImageResource(R.mipmap.ic_launcher);
+        getBackView().setImageResource(R.mipmap.ic_launcher);
+        getBackView().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showToast("个人中心");
+            }
+        });
     }
 
     @Override
