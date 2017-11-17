@@ -30,25 +30,17 @@
             android:contentDescription="@string/app_name"
             android:src="@mipmap/ic_device_light_high" />
 
-        <LinearLayout
+        <com.lyx.classroom.base.PanelLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="bottom"
-            android:orientation="horizontal">
-
-            <Space
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
+            android:layout_height="match_parent">
 
             <TextView
                 android:id="@+id/tv_device_book"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="2"
                 android:contentDescription="@string/app_name"
                 android:drawableTop="@mipmap/ic_light_book"
-                android:gravity="center_horizontal"
+                android:gravity="center"
                 android:text="自习"
                 android:textColor="@color/white" />
 
@@ -56,26 +48,19 @@
                 android:id="@+id/tv_device_projection"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="2"
                 android:contentDescription="@string/app_name"
                 android:drawableTop="@mipmap/ic_light_projection"
-                android:gravity="center_horizontal"
+                android:gravity="center"
                 android:text="投影"
                 android:textColor="@color/white" />
-
-            <Space
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
 
             <TextView
                 android:id="@+id/tv_device_teach"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="2"
                 android:contentDescription="@string/app_name"
                 android:drawableTop="@mipmap/ic_light_teach"
-                android:gravity="center_horizontal"
+                android:gravity="center"
                 android:text="教学"
                 android:textColor="@color/white" />
 
@@ -83,19 +68,13 @@
                 android:id="@+id/tv_device_power"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="2"
                 android:contentDescription="@string/app_name"
                 android:drawableTop="@mipmap/ic_light_power"
-                android:gravity="center_horizontal"
+                android:gravity="center"
                 android:text="电源"
                 android:textColor="@color/white" />
 
-            <Space
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
-
-        </LinearLayout>
+        </com.lyx.classroom.base.PanelLayout>
 
     </RelativeLayout>
 
