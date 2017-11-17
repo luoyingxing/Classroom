@@ -25,4 +25,10 @@
     <color name="gray_d8">#d8d8d8</color>
     <color name="gray_d2">#d2d2d2</color>
 
+    <color name="bg_room_one">#06c1ae</color>
+    <color name="bg_room_two">#6ab30e</color>
+    <color name="bg_room_three">#d42f6a</color>
+    <color name="bg_room_four">#1777ad</color>
+    <color name="bg_room_five">#e08112</color>
+
 </resources>

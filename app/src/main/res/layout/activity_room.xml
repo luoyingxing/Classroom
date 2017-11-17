@@ -3,11 +3,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/gray_f7"
     tools:context="com.lyx.classroom.room.RoomActivity">
 
     <ListView
         android:id="@+id/lv_room"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:divider="@color/gray_f7"
+        android:dividerHeight="10dp"
+        android:paddingBottom="8dp"
+        android:paddingEnd="10dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="12dp"
+        android:paddingStart="10dp"
+        android:paddingTop="8dp"
+        android:scrollbarStyle="outsideOverlay" />
 
 </RelativeLayout>

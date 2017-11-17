@@ -2,11 +2,88 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:background="@android:color/white"
+    android:orientation="horizontal">
 
-    <TextView
-        android:id="@+id/tv_room_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+    <View
+        android:id="@+id/tv_room_line"
+        android:layout_width="2dp"
+        android:layout_height="match_parent"
+        android:background="@color/theme_color" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_room_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:text=""
+            android:textColor="@color/gray_21"
+            android:textSize="16sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingBottom="2dp"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp"
+            android:paddingTop="2dp">
+
+            <TextView
+                android:id="@+id/tv_room_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="" />
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <ImageView
+                android:id="@+id/iv_room_light"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/app_name"
+                android:paddingLeft="2dp"
+                android:paddingRight="2dp"
+                android:src="@mipmap/ic_room_light" />
+
+            <ImageView
+                android:id="@+id/iv_room_air"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/app_name"
+                android:paddingLeft="2dp"
+                android:paddingRight="2dp"
+                android:src="@mipmap/ic_room_air" />
+
+            <ImageView
+                android:id="@+id/iv_room_curtains"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/app_name"
+                android:paddingLeft="2dp"
+                android:paddingRight="2dp"
+                android:src="@mipmap/ic_room_curtains" />
+
+            <ImageView
+                android:id="@+id/iv_room_breeze"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/app_name"
+                android:paddingLeft="2dp"
+                android:paddingRight="2dp"
+                android:src="@mipmap/ic_room_breeze" />
+
+        </LinearLayout>
+
+    </LinearLayout>
 
 </LinearLayout>
