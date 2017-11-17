@@ -3,6 +3,7 @@ package com.lyx.classroom;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.view.View;
+import android.widget.Toast;
 
 import com.lyx.classroom.dao.Area;
 import com.lyx.classroom.home.MainAdapter;
@@ -17,6 +18,8 @@ public class MainActivity extends BaseActivity {
     private ViewPagerIndicator mIndicator;
     @Id(R.id.focus_view_page)
     private ViewPager mViewPager;
+
+    private long mExitTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,4 +42,13 @@ public class MainActivity extends BaseActivity {
         mIndicator.setViewPager(mViewPager, 0);
     }
 
+    @Override
+    public void onBackPressed() {
+        if (System.currentTimeMillis() - mExitTime > 2000) {
+            Toast.makeText(getApplicationContext(), "再按一次退出", Toast.LENGTH_SHORT).show();
+            mExitTime = System.currentTimeMillis();
+        } else {
+            super.onBackPressed();
+        }
+    }
 }
