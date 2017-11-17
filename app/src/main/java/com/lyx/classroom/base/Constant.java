@@ -1,4 +1,4 @@
-package com.lyx.classroom;
+package com.lyx.classroom.base;
 
 /**
  * Constant

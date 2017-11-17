@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.lyx.classroom.base.Constant;
+
 import java.util.concurrent.TimeUnit;
 
 import rx.Observable;
