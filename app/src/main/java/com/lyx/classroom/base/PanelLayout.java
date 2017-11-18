@@ -1,6 +1,10 @@
 package com.lyx.classroom.base;
 
 import android.content.Context;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,17 +16,32 @@ import android.view.ViewGroup;
  */
 
 public class PanelLayout extends ViewGroup {
+    private Paint mPaint;
+    private String mStrokeColor = "#70FFFFFF";
 
     public PanelLayout(Context context) {
         super(context);
+        init();
     }
 
     public PanelLayout(Context context, AttributeSet attrs) {
         super(context, attrs);
+        init();
     }
 
     public PanelLayout(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+        init();
+    }
+
+    private void init() {
+        setWillNotDraw(false);
+
+        mPaint = new Paint();
+        mPaint.setAntiAlias(true);
+        mPaint.setColor(Color.parseColor(mStrokeColor));
+        mPaint.setStyle(Paint.Style.STROKE);
+        mPaint.setStrokeWidth(8);
     }
 
     @Override
@@ -86,5 +105,9 @@ public class PanelLayout extends ViewGroup {
 
     }
 
-
+    @Override
+    protected void onDraw(Canvas canvas) {
+        super.onDraw(canvas);
+        canvas.drawArc(new RectF(-20, 0, getMeasuredWidth() + 20, getMeasuredHeight() / 8 * 7), 0, 180, false, mPaint);
+    }
 }
