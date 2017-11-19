@@ -139,12 +139,24 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
         finish();
     }
 
+    protected Toast mToast;
+
     protected void showToast(Object msg) {
-        Toast.makeText(this, "" + msg, Toast.LENGTH_SHORT).show();
+        if (mToast != null) {
+            mToast.cancel();
+        }
+
+        mToast = Toast.makeText(this, "" + msg, Toast.LENGTH_SHORT);
+        mToast.show();
     }
 
     protected void showLongToast(Object msg) {
-        Toast.makeText(this, "" + msg, Toast.LENGTH_LONG).show();
+        if (mToast != null) {
+            mToast.cancel();
+        }
+
+        mToast = Toast.makeText(this, "" + msg, Toast.LENGTH_LONG);
+        mToast.show();
     }
 
 }

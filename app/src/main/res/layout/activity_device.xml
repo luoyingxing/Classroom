@@ -8,13 +8,23 @@
     tools:context="com.lyx.classroom.room.DeviceActivity">
 
     <TextView
-        android:id="@+id/tv_device_global_status"
+        android:id="@+id/tv_device_light_status"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="end"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
-        android:text="灯光：开  窗帘：开"
+        android:text="灯光：关"
+        android:textColor="@color/white" />
+
+    <TextView
+        android:id="@+id/tv_device_curtains_status"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="end"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:text="窗帘：关"
         android:textColor="@color/white" />
 
     <RelativeLayout
@@ -28,17 +38,29 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:contentDescription="@string/app_name"
-            android:src="@mipmap/ic_device_light_high" />
+            android:src="@mipmap/ic_device_light_close" />
 
         <com.lyx.classroom.base.PanelLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
             <TextView
+                android:id="@+id/tv_device_teach"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/app_name"
+                android:drawablePadding="4dp"
+                android:drawableTop="@mipmap/ic_light_teach"
+                android:gravity="center"
+                android:text="教学"
+                android:textColor="@color/white" />
+
+            <TextView
                 android:id="@+id/tv_device_book"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:contentDescription="@string/app_name"
+                android:drawablePadding="4dp"
                 android:drawableTop="@mipmap/ic_light_book"
                 android:gravity="center"
                 android:text="自习"
@@ -49,27 +71,20 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:contentDescription="@string/app_name"
+                android:drawablePadding="4dp"
                 android:drawableTop="@mipmap/ic_light_projection"
                 android:gravity="center"
                 android:text="投影"
                 android:textColor="@color/white" />
 
-            <TextView
-                android:id="@+id/tv_device_teach"
+            <CheckBox
+                android:id="@+id/cb_device_power"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:button="@null"
                 android:contentDescription="@string/app_name"
-                android:drawableTop="@mipmap/ic_light_teach"
-                android:gravity="center"
-                android:text="教学"
-                android:textColor="@color/white" />
-
-            <TextView
-                android:id="@+id/tv_device_power"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:contentDescription="@string/app_name"
-                android:drawableTop="@mipmap/ic_light_power"
+                android:drawablePadding="4dp"
+                android:drawableTop="@drawable/ic_device_light_power"
                 android:gravity="center"
                 android:text="电源"
                 android:textColor="@color/white" />
@@ -95,13 +110,15 @@
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
+            <Space
+                android:layout_width="20dp"
+                android:layout_height="match_parent" />
+
             <ImageView
                 android:id="@+id/iv_device_breeze"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:contentDescription="@string/app_name"
-                android:paddingLeft="12dp"
-                android:paddingRight="12dp"
                 android:src="@mipmap/ic_device_breeze" />
 
             <LinearLayout
@@ -112,15 +129,19 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
+                    android:layout_gravity="center"
                     android:text="清风"
                     android:textColor="@color/white" />
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="8dp" />
 
                 <android.support.v7.widget.SwitchCompat
                     android:id="@+id/sc_device_breeze"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
+                    android:layout_gravity="center"
                     android:background="@android:color/transparent"
                     android:checked="false" />
 
@@ -140,13 +161,15 @@
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
+            <Space
+                android:layout_width="20dp"
+                android:layout_height="match_parent" />
+
             <ImageView
                 android:id="@+id/iv_device_curtains"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:contentDescription="@string/app_name"
-                android:paddingLeft="12dp"
-                android:paddingRight="12dp"
                 android:src="@mipmap/ic_device_curtains" />
 
             <LinearLayout
@@ -157,15 +180,19 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
+                    android:layout_gravity="center"
                     android:text="窗帘"
                     android:textColor="@color/white" />
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="8dp" />
 
                 <android.support.v7.widget.SwitchCompat
                     android:id="@+id/sc_device_curtains"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
+                    android:layout_gravity="center"
                     android:background="@android:color/transparent"
                     android:checked="false" />
 
@@ -189,16 +216,22 @@
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
+        <Space
+            android:layout_width="20dp"
+            android:layout_height="match_parent" />
+
         <TextView
             android:id="@+id/tv_device_air"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:drawableTop="@mipmap/ic_device_air"
             android:gravity="center"
-            android:paddingLeft="12dp"
-            android:paddingRight="12dp"
             android:text="空调"
             android:textColor="@color/white" />
+
+        <Space
+            android:layout_width="20dp"
+            android:layout_height="match_parent" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -207,24 +240,30 @@
 
             <TextView
                 android:id="@+id/tv_device_air_status"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="温度20°  温度20°"
+                android:gravity="center"
+                android:text="温度25°"
                 android:textColor="@color/white" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="10dp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:gravity="center_vertical"
                 android:orientation="horizontal">
 
-                <ImageView
-                    android:id="@+id/iv_device_air_power"
+                <CheckBox
+                    android:id="@+id/cb_device_air_power"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:button="@null"
                     android:contentDescription="@string/app_name"
-                    android:paddingLeft="12dp"
-                    android:paddingRight="12dp"
-                    android:src="@mipmap/ic_light_power" />
+                    android:drawableLeft="@drawable/ic_device_air_power"
+                    android:drawableStart="@drawable/ic_device_air_power" />
 
                 <Space
                     android:layout_width="0dp"
@@ -236,18 +275,28 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:contentDescription="@string/app_name"
-                    android:paddingLeft="12dp"
-                    android:paddingRight="12dp"
-                    android:src="@mipmap/ic_light_power" />
+                    android:src="@mipmap/ic_device_air_reduce" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="14dp"
+                    android:paddingRight="14dp"
+                    android:text="温度"
+                    android:textColor="@color/white"
+                    android:textSize="16sp" />
 
                 <ImageView
                     android:id="@+id/iv_device_air_increase"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:contentDescription="@string/app_name"
-                    android:paddingLeft="12dp"
-                    android:paddingRight="12dp"
-                    android:src="@mipmap/ic_light_power" />
+                    android:src="@mipmap/ic_device_air_increase" />
+
+                <Space
+                    android:layout_width="20dp"
+                    android:layout_height="match_parent" />
+
             </LinearLayout>
 
         </LinearLayout>

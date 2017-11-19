@@ -10,7 +10,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.lyx.classroom.R;
-import com.lyx.classroom.dao.Area;
+import com.lyx.classroom.entity.Node;
 import com.lyx.classroom.room.RoomActivity;
 import com.lyx.frame.adapter.abs.CommonAdapter;
 import com.lyx.frame.utils.DpiUtils;
@@ -19,23 +19,23 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
- * HomeView
+ * PageView
  * <p/>
  * Created by luoyingxing on 17/11/16.
  */
-public class HomeView implements Serializable {
+public class PageView implements Serializable {
     private View mRootView;
     private Context mContext;
-    private Area mArea;
+    private Node mNode;
 
     private ViewHolder viewHolder;
 
-    public HomeView() {
+    public PageView() {
     }
 
-    public HomeView(Context context, Area area) {
+    public PageView(Context context, Node node) {
         this.mContext = context;
-        this.mArea = area;
+        this.mNode = node;
         init();
     }
 
@@ -60,19 +60,19 @@ public class HomeView implements Serializable {
         }
     }
 
-    private CommonAdapter<Area> mAdapter;
+    private CommonAdapter<Node> mAdapter;
 
     private void setAdapter() {
         final int width = (DpiUtils.getWidth(mContext) - DpiUtils.dipTopx(32)) / 2;
         final int height = width / 5 * 3;
 
-        mAdapter = new CommonAdapter<Area>(mContext, new ArrayList<Area>(), R.layout.item_home_list) {
+        mAdapter = new CommonAdapter<Node>(mContext, new ArrayList<Node>(), R.layout.item_home_list) {
             @Override
-            protected void convert(com.lyx.frame.adapter.abs.ViewHolder holder, Area area, int i) {
-                holder.setText(R.id.tv_item_list, area.getTitle());
+            protected void convert(com.lyx.frame.adapter.abs.ViewHolder holder, Node node, int i) {
+                holder.setText(R.id.tv_item_list, node.getTitle());
                 ImageView imageView = holder.getView(R.id.iv_item_image);
                 imageView.setLayoutParams(new LinearLayout.LayoutParams(width, height));
-                imageView.setImageResource(area.getImage());
+                imageView.setImageResource(node.getImage());
             }
         };
 
@@ -88,7 +88,7 @@ public class HomeView implements Serializable {
     }
 
     private void loadDataList() {
-        mAdapter.addAll(mArea.getChildArea());
+        mAdapter.addAll(mNode.getChildArea());
     }
 
     private class ViewHolder {

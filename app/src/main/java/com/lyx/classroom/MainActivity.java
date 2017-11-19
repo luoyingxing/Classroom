@@ -5,8 +5,8 @@ import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.widget.Toast;
 
-import com.lyx.classroom.dao.Area;
-import com.lyx.classroom.home.MainAdapter;
+import com.lyx.classroom.entity.Node;
+import com.lyx.classroom.home.PageAdapter;
 import com.lyx.classroom.base.BaseActivity;
 import com.lyx.frame.annotation.Id;
 import com.lyx.frame.annotation.IdParser;
@@ -37,8 +37,8 @@ public class MainActivity extends BaseActivity {
             }
         });
 
-        mViewPager.setAdapter(new MainAdapter(this, Area.getAreaList()));
-        mIndicator.setTabItemTitles(Area.getAreaList());
+        mViewPager.setAdapter(new PageAdapter(this, Node.getAreaList()));
+        mIndicator.setTabItemTitles(Node.getAreaList());
         mIndicator.setViewPager(mViewPager, 0);
     }
 

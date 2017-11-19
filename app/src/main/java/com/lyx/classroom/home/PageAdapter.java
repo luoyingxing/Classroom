@@ -7,29 +7,29 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.lyx.classroom.R;
-import com.lyx.classroom.dao.Area;
+import com.lyx.classroom.entity.Node;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * MainAdapter
+ * PageAdapter
  * <p/>
  * Created by luoyingxing on 17/11/16..
  */
-public class MainAdapter extends PagerAdapter {
+public class PageAdapter extends PagerAdapter {
     private Context mContext;
-    private List<Area> mAreaList = new ArrayList<>();
+    private List<Node> mNodeList = new ArrayList<>();
 
-    public MainAdapter(Context context, List<Area> list) {
+    public PageAdapter(Context context, List<Node> list) {
         this.mContext = context;
-        this.mAreaList = list;
+        this.mNodeList = list;
     }
 
     @Override
     public int getCount() {
-        if (mAreaList != null) {
-            return mAreaList.size();
+        if (mNodeList != null) {
+            return mNodeList.size();
         }
         return 0;
     }
@@ -44,8 +44,8 @@ public class MainAdapter extends PagerAdapter {
         View mPagerView = LayoutInflater.from(mContext).inflate(R.layout.item_views_adapter, null, false);
         ViewGroup viewGroup = (ViewGroup) mPagerView.findViewById(R.id.rl_home_root);
 
-        HomeView focusView = new HomeView(mContext, mAreaList.get(position));
-        View root = focusView.getRootView();
+        PageView view = new PageView(mContext, mNodeList.get(position));
+        View root = view.getRootView();
 
         if (root != null) {
             if (root.getParent() != null) {

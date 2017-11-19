@@ -4,8 +4,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.lyx.classroom.base.Constant;
-
 import java.util.concurrent.TimeUnit;
 
 import rx.Observable;
@@ -36,7 +34,7 @@ public class StartActivity extends Activity {
 
             @Override
             public void onNext(Long aLong) {
-                if (aLong > Constant.TIME_START) {
+                if (aLong > 2.5) {
                     Intent intent = new Intent(StartActivity.this, MainActivity.class);
                     startActivity(intent);
                     finish();
