@@ -77,16 +77,15 @@
                 android:text="投影"
                 android:textColor="@color/white" />
 
-            <CheckBox
-                android:id="@+id/cb_device_power"
+            <TextView
+                android:id="@+id/tv_device_power"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:button="@null"
                 android:contentDescription="@string/app_name"
                 android:drawablePadding="4dp"
-                android:drawableTop="@drawable/ic_device_light_power"
+                android:drawableTop="@mipmap/ic_light_power"
                 android:gravity="center"
-                android:text="电源"
+                android:text="关闭"
                 android:textColor="@color/white" />
 
         </com.lyx.classroom.base.PanelLayout>

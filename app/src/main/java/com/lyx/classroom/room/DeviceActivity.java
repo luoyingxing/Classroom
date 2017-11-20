@@ -40,8 +40,8 @@ public class DeviceActivity extends BaseActivity implements View.OnClickListener
     private TextView mTeachTV;
     @OnClick
     @OnTouch
-    @Id(R.id.cb_device_power)
-    private CheckBox mPowerCb;
+    @Id(R.id.tv_device_power)
+    private TextView mPowerTV;
     @Id(R.id.iv_device_breeze)
     private ImageView mBreezeIV;
     @Id(R.id.sc_device_breeze)
@@ -109,19 +109,6 @@ public class DeviceActivity extends BaseActivity implements View.OnClickListener
             }
         });
 
-        mPowerCb.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked) {
-                    mLightIV.setImageResource(R.mipmap.ic_device_light_high);
-                    mLightStatusTV.setText("灯光：开");
-                } else {
-                    mLightIV.setImageResource(R.mipmap.ic_device_light_close);
-                    mLightStatusTV.setText("灯光：关");
-                }
-            }
-        });
-
         mAirPowerCb.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -136,30 +123,23 @@ public class DeviceActivity extends BaseActivity implements View.OnClickListener
         super.onClick(v);
         switch (v.getId()) {
             case R.id.tv_device_teach:
-                if (mPowerCb.isChecked()) {
-                    mLightIV.setImageResource(R.mipmap.ic_device_light_high);
-                    mLightStatusTV.setText("灯光：开");
-                } else {
-                    showToast("请先开灯！");
-                }
+                mLightIV.setImageResource(R.mipmap.ic_device_light_high);
+                mLightStatusTV.setText("灯光：开");
                 break;
             case R.id.tv_device_book:
-                if (mPowerCb.isChecked()) {
-                    mLightIV.setImageResource(R.mipmap.ic_device_light_auto);
-                    mLightStatusTV.setText("灯光：开");
-                } else {
-                    showToast("请先开灯！");
-                }
+                mLightIV.setImageResource(R.mipmap.ic_device_light_auto);
+                mLightStatusTV.setText("灯光：开");
                 break;
             case R.id.tv_device_projection:
-                if (mPowerCb.isChecked()) {
-                    mLightIV.setImageResource(R.mipmap.ic_device_light_half);
-                    mLightStatusTV.setText("灯光：开");
-                    mCurtainsStatusTV.setText("窗帘：开");
-                    mCurtainsSwitch.setChecked(true);
-                } else {
-                    showToast("请先开灯！");
-                }
+                mLightIV.setImageResource(R.mipmap.ic_device_light_half);
+                mLightStatusTV.setText("灯光：开");
+                mCurtainsStatusTV.setText("窗帘：开");
+                mCurtainsSwitch.setChecked(true);
+                break;
+            case R.id.tv_device_power:
+                mLightIV.setImageResource(R.mipmap.ic_device_light_close);
+                mLightStatusTV.setText("灯光：关");
+                mCurtainsSwitch.setChecked(false);
                 break;
             case R.id.iv_device_air_reduce:
                 if (mAirOpen) {
