@@ -31,6 +31,9 @@
     <color name="bg_room_four">#1777ad</color>
     <color name="bg_room_five">#e08112</color>
 
+    <color name="bg_indicator_normal">#fff7f7f7</color>
+    <color name="bg_indicator_select">#ffffffff</color>
+
     <color name="bg_device_purple">#e2b0ea</color>
     <color name="bg_device_bottom">#20FFFFFF</color>
 

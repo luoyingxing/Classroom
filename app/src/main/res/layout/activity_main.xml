@@ -12,7 +12,8 @@
         android:layout_height="45dp"
         android:background="@color/theme_color"
         android:orientation="horizontal"
-        app:tab_count="5" />
+        app:normal_color="@color/bg_indicator_normal"
+        app:select_color="@color/bg_indicator_select" />
 
     <android.support.v4.view.ViewPager
         android:id="@+id/focus_view_page"

@@ -105,7 +105,7 @@ public class DeviceActivity extends BaseActivity implements View.OnClickListener
         mCurtainsSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                mCurtainsStatusTV.setText(isChecked ? "窗帘：开" : "窗帘：关");
+                mCurtainsStatusTV.setText(isChecked ? "窗帘：开" : "窗帘：合");
             }
         });
 
