@@ -32,7 +32,7 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(getLayout());
+        setContentView(getContentView());
         IdParser.inject(this);
 
         ActionBar actionBar = getSupportActionBar();
@@ -69,7 +69,12 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
         mRightImage.setOnClickListener(this);
     }
 
-    protected int getLayout() {
+    /**
+     * Activity 布局
+     *
+     * @return Activity的布局文件
+     */
+    protected int getContentView() {
         return R.layout.activity_base;
     }
 

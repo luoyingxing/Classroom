@@ -15,7 +15,6 @@ import com.lyx.classroom.R;
 import com.lyx.classroom.base.BaseActivity;
 import com.lyx.classroom.entity.Node;
 import com.lyx.frame.annotation.Id;
-import com.lyx.frame.annotation.IdParser;
 import com.lyx.frame.annotation.OnClick;
 import com.lyx.frame.annotation.OnTouch;
 
@@ -80,11 +79,13 @@ public class DeviceActivity extends BaseActivity implements View.OnClickListener
     private int mAirTemperature = 25;
 
     @Override
+    protected int getContentView() {
+        return R.layout.activity_device;
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_device);
-        IdParser.inject(this);
-
         mNode = (Node) getIntent().getSerializableExtra(PARAM);
         if (null != mNode) {
             setSubtitle(mNode.getName());

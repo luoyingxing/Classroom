@@ -9,7 +9,6 @@ import com.lyx.classroom.entity.Node;
 import com.lyx.classroom.home.PageAdapter;
 import com.lyx.classroom.base.BaseActivity;
 import com.lyx.frame.annotation.Id;
-import com.lyx.frame.annotation.IdParser;
 import com.lyx.frame.widget.ViewPagerIndicator;
 
 
@@ -22,11 +21,13 @@ public class MainActivity extends BaseActivity {
     private long mExitTime;
 
     @Override
+    protected int getContentView() {
+        return R.layout.activity_main;
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        IdParser.inject(this);
-
         setTitle(getString(R.string.home_title));
         getRightImage().setImageResource(R.mipmap.ic_home_more);
         getBackView().setImageResource(R.mipmap.ic_home_personal);

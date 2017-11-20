@@ -12,7 +12,6 @@ import com.lyx.classroom.entity.Node;
 import com.lyx.frame.adapter.abs.CommonAdapter;
 import com.lyx.frame.adapter.abs.ViewHolder;
 import com.lyx.frame.annotation.Id;
-import com.lyx.frame.annotation.IdParser;
 import com.lyx.frame.utils.TimeUtils;
 
 import java.util.ArrayList;
@@ -28,11 +27,13 @@ public class RoomActivity extends BaseActivity {
     private int[] mBackground = new int[]{R.color.bg_room_one, R.color.bg_room_two, R.color.bg_room_three, R.color.bg_room_four, R.color.bg_room_five};
 
     @Override
+    protected int getContentView() {
+        return R.layout.activity_room;
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_room);
-        IdParser.inject(this);
-
         mNode = (Node) getIntent().getSerializableExtra(PARAM);
         if (null != mNode) {
             setSubtitle(mNode.getTitle());
