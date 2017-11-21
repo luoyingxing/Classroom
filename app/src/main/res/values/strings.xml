@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Classroom</string>
+    <string name="app_name">BKL</string>
 
     <string name="start_title">绿色智慧教室</string>
     <string name="start_subject">韩山师范学院</string>
@@ -7,5 +7,27 @@
 
     <string name="home_title">韩山师范学院</string>
     <string name="home_personal">个人中心</string>
+    <string name="main_exit">再按一次退出</string>
+
+    <string name="device_light_status_off">灯光：关</string>
+    <string name="device_light_status_on">灯光：开</string>
+    <string name="device_curtains_status_on">窗帘：开</string>
+    <string name="device_curtains_status_off">窗帘：合</string>
+    <string name="device_breeze_on">清风打开</string>
+    <string name="device_breeze_off">清风关闭</string>
+    <string name="device_teach_mode">教学</string>
+    <string name="device_book_mode">自习</string>
+    <string name="device_projection_mode">投影</string>
+    <string name="device_power_mode">关闭</string>
+    <string name="device_breeze_mode">清风</string>
+    <string name="device_curtains_mode">窗帘</string>
+    <string name="device_air_mode">空调</string>
+
+    <string name="device_air_on_tip">请先打开空调！</string>
+    <string name="device_air_status">温度25°</string>
+    <string name="device_air_temperature">温度</string>
+    <string name="device_air_open_tip">空调已开，温度</string>
+    <string name="device_air_open_tip_temperature">°</string>
+    <string name="device_air_close_tip">空调已关</string>
 
 </resources>

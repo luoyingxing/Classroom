@@ -19,7 +19,7 @@ import com.lyx.frame.annotation.OnClick;
 import com.lyx.frame.annotation.OnTouch;
 
 public class DeviceActivity extends BaseActivity implements View.OnClickListener, View.OnTouchListener {
-    public static final String PARAM = "AREA";
+    public static final String PARAM = "PARAM";
     @Id(R.id.tv_device_light_status)
     private TextView mLightStatusTV;
     @Id(R.id.tv_device_curtains_status)
@@ -70,10 +70,6 @@ public class DeviceActivity extends BaseActivity implements View.OnClickListener
     private Node mNode;
 
     /**
-     * 空调是否已开
-     */
-    private boolean mAirOpen = false;
-    /**
      * 空调温度
      */
     private int mAirTemperature = 25;
@@ -98,21 +94,20 @@ public class DeviceActivity extends BaseActivity implements View.OnClickListener
         mBreezeSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                showToast(isChecked ? "清风打开" : "清风关闭");
+                showToast(isChecked ? getString(R.string.device_breeze_on) : getString(R.string.device_breeze_off));
             }
         });
 
         mCurtainsSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                mCurtainsStatusTV.setText(isChecked ? "窗帘：开" : "窗帘：合");
+                mCurtainsStatusTV.setText(isChecked ? getString(R.string.device_curtains_status_on) : getString(R.string.device_curtains_status_off));
             }
         });
 
         mAirPowerCb.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                mAirOpen = isChecked;
                 updateAir();
             }
         });
@@ -124,44 +119,46 @@ public class DeviceActivity extends BaseActivity implements View.OnClickListener
         switch (v.getId()) {
             case R.id.tv_device_teach:
                 mLightIV.setImageResource(R.mipmap.ic_device_light_high);
-                mLightStatusTV.setText("灯光：开");
+                mLightStatusTV.setText(getString(R.string.device_light_status_on));
                 break;
             case R.id.tv_device_book:
                 mLightIV.setImageResource(R.mipmap.ic_device_light_auto);
-                mLightStatusTV.setText("灯光：开");
+                mLightStatusTV.setText(getString(R.string.device_light_status_on));
                 break;
             case R.id.tv_device_projection:
                 mLightIV.setImageResource(R.mipmap.ic_device_light_half);
-                mLightStatusTV.setText("灯光：开");
-                mCurtainsStatusTV.setText("窗帘：开");
+                mLightStatusTV.setText(getString(R.string.device_light_status_on));
+                mCurtainsStatusTV.setText(getString(R.string.device_curtains_status_on));
                 mCurtainsSwitch.setChecked(true);
                 break;
             case R.id.tv_device_power:
                 mLightIV.setImageResource(R.mipmap.ic_device_light_close);
-                mLightStatusTV.setText("灯光：关");
+                mLightStatusTV.setText(getString(R.string.device_light_status_off));
                 mCurtainsSwitch.setChecked(false);
                 break;
             case R.id.iv_device_air_reduce:
-                if (mAirOpen) {
+                if (mAirPowerCb.isChecked()) {
                     mAirTemperature--;
                     updateAir();
                 } else {
-                    showToast("请先打开空调！");
+                    showToast(getString(R.string.device_air_on_tip));
                 }
                 break;
             case R.id.iv_device_air_increase:
-                if (mAirOpen) {
+                if (mAirPowerCb.isChecked()) {
                     mAirTemperature++;
                     updateAir();
                 } else {
-                    showToast("请先打开空调！");
+                    showToast(getString(R.string.device_air_on_tip));
                 }
                 break;
         }
     }
 
     private void updateAir() {
-        mAirStatusTV.setText(mAirOpen ? "空调已开，温度" + mAirTemperature + "°" : "空调已关");
+        mAirStatusTV.setText(mAirPowerCb.isChecked() ?
+                getString(R.string.device_air_open_tip) + mAirTemperature + getString(R.string.device_air_open_tip_temperature) :
+                getString(R.string.device_air_close_tip));
     }
 
     @Override

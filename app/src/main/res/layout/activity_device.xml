@@ -14,7 +14,7 @@
         android:gravity="end"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
-        android:text="灯光：关"
+        android:text="@string/device_light_status_off"
         android:textColor="@color/white" />
 
     <TextView
@@ -24,7 +24,7 @@
         android:gravity="end"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
-        android:text="窗帘：关"
+        android:text="@string/device_curtains_status_off"
         android:textColor="@color/white" />
 
     <RelativeLayout
@@ -52,7 +52,7 @@
                 android:drawablePadding="4dp"
                 android:drawableTop="@mipmap/ic_light_teach"
                 android:gravity="center"
-                android:text="教学"
+                android:text="@string/device_teach_mode"
                 android:textColor="@color/white" />
 
             <TextView
@@ -63,7 +63,7 @@
                 android:drawablePadding="4dp"
                 android:drawableTop="@mipmap/ic_light_book"
                 android:gravity="center"
-                android:text="自习"
+                android:text="@string/device_book_mode"
                 android:textColor="@color/white" />
 
             <TextView
@@ -74,7 +74,7 @@
                 android:drawablePadding="4dp"
                 android:drawableTop="@mipmap/ic_light_projection"
                 android:gravity="center"
-                android:text="投影"
+                android:text="@string/device_projection_mode"
                 android:textColor="@color/white" />
 
             <TextView
@@ -85,7 +85,7 @@
                 android:drawablePadding="4dp"
                 android:drawableTop="@mipmap/ic_light_power"
                 android:gravity="center"
-                android:text="关闭"
+                android:text="@string/device_power_mode"
                 android:textColor="@color/white" />
 
         </com.lyx.classroom.base.PanelLayout>
@@ -129,7 +129,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="清风"
+                    android:text="@string/device_breeze_mode"
                     android:textColor="@color/white" />
 
                 <Space
@@ -180,7 +180,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="窗帘"
+                    android:text="@string/device_curtains_mode"
                     android:textColor="@color/white" />
 
                 <Space
@@ -225,7 +225,7 @@
             android:layout_height="wrap_content"
             android:drawableTop="@mipmap/ic_device_air"
             android:gravity="center"
-            android:text="空调"
+            android:text="@string/device_air_mode"
             android:textColor="@color/white" />
 
         <Space
@@ -242,7 +242,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="温度25°"
+                android:text="@string/device_air_status"
                 android:textColor="@color/white" />
 
             <Space
@@ -281,7 +281,7 @@
                     android:layout_height="wrap_content"
                     android:paddingLeft="14dp"
                     android:paddingRight="14dp"
-                    android:text="温度"
+                    android:text="@string/device_air_temperature"
                     android:textColor="@color/white"
                     android:textSize="16sp" />
 

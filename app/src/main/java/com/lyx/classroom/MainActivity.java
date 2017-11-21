@@ -3,7 +3,6 @@ package com.lyx.classroom;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.view.View;
-import android.widget.Toast;
 
 import com.lyx.classroom.entity.Node;
 import com.lyx.classroom.home.PageAdapter;
@@ -46,7 +45,7 @@ public class MainActivity extends BaseActivity {
     @Override
     public void onBackPressed() {
         if (System.currentTimeMillis() - mExitTime > 2000) {
-            Toast.makeText(getApplicationContext(), "再按一次退出", Toast.LENGTH_SHORT).show();
+            showToast(getString(R.string.main_exit));
             mExitTime = System.currentTimeMillis();
         } else {
             super.onBackPressed();

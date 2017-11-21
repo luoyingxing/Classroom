@@ -17,7 +17,7 @@ import com.lyx.frame.utils.TimeUtils;
 import java.util.ArrayList;
 
 public class RoomActivity extends BaseActivity {
-    public static final String PARAM = "AREA";
+    public static final String PARAM = "PARAM";
     @Id(R.id.lv_room)
     private ListView mListView;
 
