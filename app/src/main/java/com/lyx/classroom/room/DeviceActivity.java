@@ -32,8 +32,12 @@ public class DeviceActivity extends BaseActivity implements View.OnClickListener
     private TextView mBookTV;
     @OnClick
     @OnTouch
-    @Id(R.id.tv_device_projection)
-    private TextView mProjectionTV;
+    @Id(R.id.tv_device_light_reduce)
+    private TextView mReduceTV;
+    @OnClick
+    @OnTouch
+    @Id(R.id.tv_device_light_increase)
+    private TextView mIncreaseTV;
     @OnClick
     @OnTouch
     @Id(R.id.tv_device_teach)
@@ -68,11 +72,16 @@ public class DeviceActivity extends BaseActivity implements View.OnClickListener
     private ImageView mAirIncreaseIV;
 
     private Node mNode;
-
+    /**
+     * 灯光亮度级别
+     */
+    private int mLightLevel;
     /**
      * 空调温度
      */
     private int mAirTemperature = 25;
+
+    private boolean mIsSwitch = true;
 
     @Override
     protected int getContentView() {
@@ -118,20 +127,37 @@ public class DeviceActivity extends BaseActivity implements View.OnClickListener
         super.onClick(v);
         switch (v.getId()) {
             case R.id.tv_device_teach:
+                clearLevel();
                 mLightIV.setImageResource(R.mipmap.ic_device_light_high);
                 mLightStatusTV.setText(getString(R.string.device_light_status_on));
                 break;
             case R.id.tv_device_book:
+                clearLevel();
                 mLightIV.setImageResource(R.mipmap.ic_device_light_auto);
                 mLightStatusTV.setText(getString(R.string.device_light_status_on));
                 break;
-            case R.id.tv_device_projection:
-                mLightIV.setImageResource(R.mipmap.ic_device_light_half);
-                mLightStatusTV.setText(getString(R.string.device_light_status_on));
-                mCurtainsStatusTV.setText(getString(R.string.device_curtains_status_on));
-                mCurtainsSwitch.setChecked(true);
+            case R.id.tv_device_light_increase:
+                mLightLevel++;
+                if (mLightLevel > 10) {
+                    mLightLevel = 10;
+                }
+
+                if (mIsSwitch) {
+                    mLightLevel = 5;
+                    mIsSwitch = false;
+                }
+
+                updateLight();
+                break;
+            case R.id.tv_device_light_reduce:
+                mLightLevel--;
+                if (mLightLevel < 0) {
+                    mLightLevel = 0;
+                }
+                updateLight();
                 break;
             case R.id.tv_device_power:
+                clearLevel();
                 mLightIV.setImageResource(R.mipmap.ic_device_light_close);
                 mLightStatusTV.setText(getString(R.string.device_light_status_off));
                 mCurtainsSwitch.setChecked(false);
@@ -152,6 +178,33 @@ public class DeviceActivity extends BaseActivity implements View.OnClickListener
                     showToast(getString(R.string.device_air_on_tip));
                 }
                 break;
+        }
+    }
+
+    private void clearLevel() {
+        mIsSwitch = true;
+        mLightLevel = 0;
+    }
+
+    private void updateLight() {
+        if (mLightLevel > 5) {
+            mLightIV.setImageResource(R.mipmap.ic_device_light_high);
+            mCurtainsStatusTV.setText(getString(R.string.device_curtains_status_on));
+            mCurtainsSwitch.setChecked(true);
+            mLightStatusTV.setText(getString(R.string.device_light_status_on) + "，亮度" + mLightLevel * 100 / 10 + "%");
+        } else if (mLightLevel < 5) {
+            mLightIV.setImageResource(R.mipmap.ic_device_light_close);
+            mCurtainsStatusTV.setText(getString(R.string.device_curtains_status_off));
+            mCurtainsSwitch.setChecked(false);
+            if (mLightLevel == 0) {
+                mLightStatusTV.setText(getString(R.string.device_light_status_off));
+            } else {
+                mLightStatusTV.setText(getString(R.string.device_light_status_on) + "，亮度" + mLightLevel * 100 / 10 + "%");
+            }
+        } else {
+            mLightIV.setImageResource(R.mipmap.ic_device_light_half);
+            mLightStatusTV.setText(String.format("%s，亮度50%%", getString(R.string.device_light_status_on)));
+            mCurtainsSwitch.setChecked(true);
         }
     }
 

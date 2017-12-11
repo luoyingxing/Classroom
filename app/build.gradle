@@ -11,8 +11,44 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
-    buildTypes {
+
+    signingConfigs {
+        debug {
+            v1SigningEnabled true
+            v2SigningEnabled true
+        }
         release {
+            v1SigningEnabled true
+            v2SigningEnabled true
+            storeFile file("ClassRoom.jks")
+            storePassword "123456"
+            keyAlias "ClassRoom"
+            keyPassword "123456"
+
+            applicationVariants.all {
+                variant ->
+                    def buildName
+                    def outApkName = "ClassRoom"
+                    def outDir
+
+                    variant.outputs.each { output ->
+                        variant.productFlavors.each { product ->
+                            buildName = product.name
+                        }
+                        outDir = output.outputFile.parent
+                        outApkName = outApkName + '.apk'
+                        output.outputFile = new File(outDir, outApkName)
+                    }
+            }
+        }
+    }
+
+    buildTypes {
+        debug {
+            signingConfig signingConfigs.release
+        }
+        release {
+            signingConfig signingConfigs.release
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }

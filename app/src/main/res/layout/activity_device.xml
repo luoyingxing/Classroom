@@ -67,17 +67,6 @@
                 android:textColor="@color/white" />
 
             <TextView
-                android:id="@+id/tv_device_projection"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:contentDescription="@string/app_name"
-                android:drawablePadding="4dp"
-                android:drawableTop="@mipmap/ic_light_projection"
-                android:gravity="center"
-                android:text="@string/device_projection_mode"
-                android:textColor="@color/white" />
-
-            <TextView
                 android:id="@+id/tv_device_power"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -86,6 +75,28 @@
                 android:drawableTop="@mipmap/ic_light_power"
                 android:gravity="center"
                 android:text="@string/device_power_mode"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:id="@+id/tv_device_light_reduce"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/app_name"
+                android:drawablePadding="4dp"
+                android:drawableTop="@mipmap/ic_light_reduce"
+                android:gravity="center"
+                android:text="@string/device_light_reduce"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:id="@+id/tv_device_light_increase"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/app_name"
+                android:drawablePadding="4dp"
+                android:drawableTop="@mipmap/ic_light_increase"
+                android:gravity="center"
+                android:text="@string/device_light_increase"
                 android:textColor="@color/white" />
 
         </com.lyx.classroom.base.PanelLayout>

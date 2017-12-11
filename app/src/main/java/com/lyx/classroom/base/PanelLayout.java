@@ -41,7 +41,7 @@ public class PanelLayout extends ViewGroup {
         mPaint.setAntiAlias(true);
         mPaint.setColor(Color.parseColor(mStrokeColor));
         mPaint.setStyle(Paint.Style.STROKE);
-        mPaint.setStrokeWidth(8);
+        mPaint.setStrokeWidth(1);
     }
 
     @Override
@@ -65,17 +65,17 @@ public class PanelLayout extends ViewGroup {
 
     @Override
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
-
         int childCount = getChildCount();
 
-        if (childCount != 4) {
-            throw new RuntimeException("the child view only support four count!");
+        if (childCount != 5) {
+            throw new RuntimeException("the child view only support five count!");
         }
 
         View childOne = getChildAt(0);
         View childTwo = getChildAt(1);
         View childThree = getChildAt(2);
         View childFour = getChildAt(3);
+        View childFive = getChildAt(4);
 
         int width = getMeasuredWidth();
         int height = getMeasuredHeight();
@@ -90,24 +90,28 @@ public class PanelLayout extends ViewGroup {
 
         int twoWidth = childTwo.getMeasuredWidth();
         int twoHeight = childTwo.getMeasuredHeight();
-        int twoLeft = (perWidth - twoWidth) / 2 + perWidth;
+        int twoLeft = perWidth - twoWidth / 2;
         childTwo.layout(twoLeft, centerHeight / 2 * 3 - twoHeight, twoLeft + twoWidth, centerHeight / 2 * 3);
 
         int threeWidth = childFour.getMeasuredWidth();
         int threeHeight = childFour.getMeasuredHeight();
-        int threeRight = width - perWidth - (perWidth - threeHeight) / 2;
-        childThree.layout(threeRight - threeWidth, centerHeight / 2 * 3 - threeHeight, threeRight, centerHeight / 2 * 3);
+        int threeLeft = width / 2 - threeWidth / 2;
+        childThree.layout(threeLeft, centerHeight / 2 * 3 - threeHeight / 2, threeLeft + threeWidth, centerHeight / 2 * 3 + threeHeight / 2);
 
         int fourWidth = childFour.getMeasuredWidth();
         int fourHeight = childFour.getMeasuredHeight();
-        int fourRight = width - (perWidth - fourWidth) / 2;
-        childFour.layout(fourRight - fourWidth, centerHeight - fourHeight, fourRight, centerHeight);
+        int fourRight = width / 4 * 3 + fourWidth / 2;
+        childFour.layout(fourRight - fourWidth, centerHeight / 2 * 3 - fourHeight, fourRight, centerHeight / 2 * 3);
 
+        int fiveWidth = childFive.getMeasuredWidth();
+        int fiveHeight = childFive.getMeasuredHeight();
+        int fiveRight = width - (perWidth - fiveWidth) / 2;
+        childFive.layout(fiveRight - fiveWidth, centerHeight - fiveHeight, fiveRight, centerHeight);
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        canvas.drawArc(new RectF(-20, 0, getMeasuredWidth() + 20, getMeasuredHeight() / 8 * 7), 0, 180, false, mPaint);
+        canvas.drawArc(new RectF(0, -26, getMeasuredWidth(), getMeasuredHeight() / 16 * 15), 0, 180, false, mPaint);
     }
 }
